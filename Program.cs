@@ -22,41 +22,35 @@ class Program
         Console.WriteLine("최종 합계: " + (money + bonus) + "원");
         Console.WriteLine("-------------------------------");
 
-        Console.WriteLine("\n---출금 시스템 가동---");
-        Console.Write("출금할 금액을 입력하세요: ");
-
-        string input = Console.ReadLine();
-        int requestMoney = int.Parse(input);
-
-        if (requestMoney <= money)
+      while (money > 0)
         {
-            money = money - requestMoney;
-            Console.WriteLine(requestMoney + "원 출금 완료! ");
-            Console.WriteLine("남은 최종 잔액: " + money + "원");
+            Console.WriteLine("\n---------------------------------");
+            Console.Write("출금할 금액을 입력하세요(종료하려면 0을 입력): ");
 
+            int money2 = int.Parse(Console.ReadLine());
+
+            if (money2 == 0)
+            {
+                Console.WriteLine("시스템 종료");
+                break;
+
+            }
+            if(money2 <= money)
+            {
+                money -= money2; // -= > money - money2
+                Console.Write(money2 + "원 출금 완료");
+                Console.WriteLine("남은 잔액" + money + "원");
+
+            }
+            else
+            {
+                Console.Write("잔액 부족 현재" + money + "원만 남아있습니다");
+
+            }
         }
-    
+        Console.WriteLine("잔액 부족. 봇 가동 중단");
 
-        
-        else
-        {
-            Console.WriteLine("잔액이 부족하여 출금할 수 없습니다");
-            Console.Write(" 현재 부족한 금액: " + (requestMoney - money) + "원");
-
-        }
-
-        if (money >= 1000000)
-        {
-            Console.WriteLine(" VIP 고객님 환영합니다.");
-        }
-        else if ( money >= 100000)
-        {
-            Console.WriteLine("일반 고객님 환영합니다.");
-         }
-        else
-        {
-            Console.WriteLine("계좌를 채워보세요");
-        }
+       
 
   
 

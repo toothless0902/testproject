@@ -22,33 +22,48 @@ class Program
         Console.WriteLine("최종 합계: " + (money + bonus) + "원");
         Console.WriteLine("-------------------------------");
 
-      while (money > 0)
+        while (money <= 500000)
         {
-            Console.WriteLine("\n---------------------------------");
-            Console.Write("출금할 금액을 입력하세요(종료하려면 0을 입력): ");
+            Console.WriteLine("퀀트 봇을 실행하기 위한 최소 금액이 부족합니다");
+            Console.WriteLine("추가 입금 금액을 입력해주세요: " + "현재 잔액 :" + money);
 
-            int money2 = int.Parse(Console.ReadLine());
+            string money2 = Console.ReadLine();
 
-            if (money2 == 0)
+            int rmoney2 = int.Parse(money2);
+
+            money += rmoney2;
+            
+            if (money >= 500000)
             {
-                Console.WriteLine("시스템 종료");
+                Console.WriteLine("투자 할 준비를 끝냈습니다.");
                 break;
-
             }
-            if(money2 <= money)
+            else
             {
-                money -= money2; // -= > money - money2
-                Console.Write(money2 + "원 출금 완료");
-                Console.WriteLine("남은 잔액" + money + "원");
+                Console.WriteLine("더 많은 금액을 예치하세요");
+            }
+        }
+        int buycount = 0;
+     
+        for( int i = 1; i <= 10; i++)
+        {
+            if (buycount < 5)
+            {
+
+
+                money -= 100000;
+                buycount++;
+                Console.WriteLine(i + "번째 종목 분석 중...");
+                Console.WriteLine(i + "번째 매수 완료. 현재 잔액 : " + money);
 
             }
             else
             {
-                Console.Write("잔액 부족 현재" + money + "원만 남아있습니다");
-
+                Console.Write("목표 수량 5개를 다 채웠으. 분석 종료");
+                break;
             }
+
         }
-        Console.WriteLine("잔액 부족. 봇 가동 중단");
 
        
 
